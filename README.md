@@ -4,7 +4,7 @@ Contents:
 - Network Topology
 - ELK Config
   - Beats (Open source data shippers used to send data to Elasticsearch)
-    - Beats > Elasticsearch (via Logstash or direct) > visualized in Kibana
+    * Beats directly to Elasticsearch or processed/enhanced via Logstash. Visualized in Kibana.
   - Machines Being Monitored
 - Ansible build usage instructions
 - Access Policies
