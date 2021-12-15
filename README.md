@@ -11,7 +11,7 @@ Contents:
 
 ## Network Topology
 
-
+NETWORK DIAGRAM IMAGE HERE
 
 This network exposes a load-balanced and monitored instance of DVWA ("Damn Vulnerable Web Application")
 
@@ -57,15 +57,12 @@ Access policy summary:
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. This is advantageous because it allows for infrastructure as code to implement automation, while also avoiding wasted time configuring each machine individually.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
-
+- Install Docker.io, pip3, and Docker python module
+- Download and launch an ELK container
+- Enable service Docker service on boot
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -82,7 +79,7 @@ The playbook is duplicated below.
 # install_elk.yml
 - name: Configure Elk VM with Docker
   hosts: elkservers
-  remote_user: elk
+  remote_user: RedAdmin
   become: true
   tasks:
     # Use apt module
@@ -131,19 +128,17 @@ The playbook is duplicated below.
 ```
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the DVWA 1 and DVWA 2 VMs, at `10.0.0.5` and `10.0.0.6`, respectively.
+This ELK server is configured to monitor the DVWA 1 and DVWA 2 VMs, at `10.0.0.5` and `10.0.0.6`.
 
 We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
-- Packetbeat
 
 These Beats allow us to collect the following information from each machine:
 - **Filebeat**: Filebeat detects changes to the filesystem. Specifically, we use it to collect Apache logs.
 - **Metricbeat**: Metricbeat detects changes in system metrics, such as CPU usage. We use it to detect SSH login attempts, failed `sudo` escalations, and CPU/RAM statistics.
-- **Packetbeat**: Packetbeat collects packets that pass through the NIC, similar to Wireshark. We use it to generate a trace of all activity that takes place on the network, in case later forensic analysis should be warranted.
 
-The playbook below installs Metricbeat on the target hosts. The playbook for installing Filebeat is not included, but looks essentially identical — simply replace `metricbeat` with `filebeat`, and it will work as expected.
+The playbook below installs Metricbeat on the target hosts. The playbook for installing Filebeat is not included, but looks very similar — simply replace `metricbeat` with `filebeat`, and it should work as expected.
 
 ```yaml
 ---
@@ -179,7 +174,7 @@ The playbook below installs Metricbeat on the target hosts. The playbook for ins
 ```
 
 ### Using the Playbooks
-In order to use the playbooks, you will need to have an Ansible control node already configured. We use the **jump box** for this purpose.
+In order to use the playbooks, an Ansible control node must already be configured. The **jump box** is used for this purpose.
 
 To use the playbooks, we must perform the following steps:
 - Copy the playbooks to the Ansible Control Node
@@ -199,7 +194,7 @@ $ cp project-1/files/* ./files
 
 This copies the playbook files to the correct place.
 
-Next, you must create a `hosts` file to specify which VMs to run each playbook on. Run the commands below:
+Next, a `hosts` file must be created to specify which VMs to run each playbook on. Run the commands below:
 
 ```bash
 $ cd /etc/ansible
@@ -209,7 +204,7 @@ $ cat > hosts <<EOF
 10.0.0.6
 
 [elk]
-10.0.0.8
+10.1.0.4
 EOF
 ```
 
@@ -224,4 +219,4 @@ After this, the commands below run the playbook:
 
 To verify success, wait five minutes to give ELK time to start up. 
 
-Then, run: `curl http://10.0.0.8:5601`. This is the address of Kibana. If the installation succeeded, this command should print HTML to the console.
+Then, run: `curl http://10.1.0.4:5601`. This is the address of Kibana. Following successful installation, this command should print HTML to the console.
