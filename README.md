@@ -5,18 +5,17 @@ Contents:
 - ELK Config
   - Beats (Open source data shippers used to send data to Elasticsearch)
     * Beats directly to Elasticsearch or processed/enhanced via Logstash. Visualized in Kibana.
-  - Machines Being Monitored
+  - Monitored Machines
 - Ansible build usage instructions
 - Access Policies
 
-### Description of the Topology
-This repository includes code defining the infrastructure below. 
+## Network Topology
 
-![](Images/Solved.png)
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the "D*mn Vulnerable Web Application"
 
-Load balancing ensures that the application will be highly **available**, in addition to restricting **inbound access** to the network. The load balancer ensures that work to process incoming traffic will be shared by both vulnerable web servers. Access controls will ensure that only authorized users — namely, ourselves — will be able to connect in the first place.
+This network exposes a load-balanced and monitored instance of DVWA ("Damn Vulnerable Web Application")
+
+Load balancing ensures application availability, and restricts inbound access to the network. The load balancer ensures that work to process incoming traffic will be shared by both vulnerable web servers. Access controls will ensure that only authorized users — namely, ourselves — will be able to connect in the first place.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the **file systems of the VMs on the network**, as well as watch **system metrics**, such as CPU usage; attempted SSH logins; `sudo` escalation failures; etc.
 
