@@ -37,12 +37,12 @@ The ELK VM exposes an Elastic Stack instance. **Docker** is used to download and
 
 A reusable Ansible Playbook is employed to accomplish the task. The playbook is duplicated below.
 
-To use this playbook, log into the Jump Box, then run the command: `ansible-playbook install_elk.yml elk`. This runs the `install_elk.yml` playbook on the `elk` host.
+To use this playbook, log into the jump box, then run the command: `ansible-playbook install_elk.yml elk`. This runs the `install_elk.yml` playbook on the `elk` host.
 
 ### Access Policies
 The machines on the internal network are NOT exposed to the public Internet. 
 
-Only the **jump box** machine can accept connections from the Internet. Access to this machine is only allowed from the IP address `216.106.133.65`
+Only the jump box machine can accept connections from the Internet. Access to this machine is only allowed from the IP address `216.106.133.65`
 
 Machines _within_ the network can only be accessed by each other. The DVWA 1 and DVWA 2 VMs send traffic to the ELK server.
 
