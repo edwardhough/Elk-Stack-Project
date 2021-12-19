@@ -68,7 +68,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 - _TODO_: Update the image file path with the name of your screenshot of docker ps output:
 
-  ![STUDENT TODO: Update image file path](Images/docker_ps_output.png)
+  ![Image file path](sudo_docker_ps_command.jpg)
 
 
 
