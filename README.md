@@ -11,7 +11,7 @@ Contents:
 
 ## Network Topology
 
-NETWORK DIAGRAM IMAGE HERE
+![Myimagehere](Diagrams/Network Topology.jpg)
 
 This network exposes a load-balanced and monitored instance of DVWA ("Damn Vulnerable Web Application")
 
